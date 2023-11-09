@@ -1,83 +1,122 @@
-# What is Moonshine?
+# Giới thiệu về Moonshine Todo-app
 ![Logo](./assets/sunrise.png)
 
-___Moonshine___ was primarily made to replace two of the most frequently used apps on my machine but with time I realised I needed a little more feature-packed project. But before I tell you more about it, here are some screenshots:
+Chức năng của __Moonshine__ :
+1. Hiển thị một câu trích dẫn có thể truyền cảm hứng, hiển thị thời gian hiện tại và hình nền ngẫu nhiên.
+2. Lên kế hoạch cho các ngày.
+3. Gửi lời nhắc cho bạn bè và đồng nghiệp về các công việc thông qua SMS và Email.
+4. App có sẵn ở mọi nơi.
 
-## Screenshots
+## Ảnh màn hình
 
-![Screenshot_1](./assets/Screenshot%202023-04-06%20at%201.01.25%20PM.png)
-![Todo_light_mode_with_Notifications center_Screenshot](./assets/Screenshot%202023-04-07%20at%2011.40.35%20AM.png)
-![Todo_Add_Email_screenshot](./assets/Screenshot%202023-04-07%20at%2011.31.40%20AM.png)
-![Update_todo_and_send_sms_reminder_screenshot](./assets/Screenshot%202023-04-07%20at%2011.34.46%20AM.png)
+![Thời gian hiện tại](./assets/Screenshot%202023-04-06%20at%201.01.25%20PM.png)
+![Trung tâm thông báo của Moonshine](./assets/Screenshot%202023-04-07%20at%2011.40.35%20AM.png)
+![Gửi email qua Moonshine](./assets/Screenshot%202023-04-07%20at%2011.31.40%20AM.png)
+![Cập nhật todo và gửi lời nhắc sms](./assets/Screenshot%202023-04-07%20at%2011.34.46%20AM.png)
 
-To start-off, it was supposed to replace just two apps:
+# Cài đặt database
 
-1. A browser extension that shows an inspirational quote, the current time and has a beautiful image background, and
+Trong project này, chúng ta sẽ sử dụng MongoDB để lưu trữ dữ liệu.
 
-2. Obsidian - Which I used to plan the next day, every night.
+## Tạo tài khoản MongoDB
 
-As I started to build this, I realised I needed more than just a todo. I encountered two problems and incorporated the solutions for them in Moonshine itself:
+Tạo tài khoản [MongoDB](https://www.mongodb.com) và đăng nhập
 
-- For tasks that needed me to send reminder to a friend, I had to pick up my phone and send a Whatsapp message ( I usually keep my phone away when I'm working, so this was like sending invitation to delightful distractions, which needless to say, was not something I wanted to do). 
-> Solution: _I used __Novu__ to incorporate just the feature I wanted: Send reminders to my friends on their phone about a certain task._
+## Tạo project trong MongoDB
+
+Tạo một project mới ở phía trên bên trái bằng cách bấm vào nút "New Project"
+![Tạo project mới](./assets/Screenshot%202023-11-07%20152756.png)
+
+Đặt tên cho Project rồi bấm "Next" và thêm thành viên (nếu có) rồi bấm "Create Project"
+![Đặt tên Project](./assets/Screenshot%202023-11-07%20153531.png)
+![Thêm thành viên Project](./assets/Screenshot%202023-11-07%20153806.png)
+
+## Tạo Database 
+
+ Bấm "Create" ở giữa màn hình để tạo một cloud database
+ ![Tạo database](./assets/Screenshot%202023-11-07%20153924.png)
+
+ Chọn lựa chọn miễn phí
+ ![Lựa chọn](./assets/Screenshot%202023-11-07%20154055.png)
+
+ Nhập username và password mà dùng để đăng nhập vào MongoDB, sau đó bấm "Create User"
+ ![Tạo user](./assets/Screenshot%202023-11-07%20154951.png)
+
+ Sau đó kéo xuống cuối, bấm "Finish and Close"
+ ![Hoàn thành tạo database](./assets/Screenshot%202023-11-07%20154924.png)
+
+## Kết nối với Database
+
+Vào phần "Network Access", bấm "Add IP Address"
+![Network Access](./assets/Screenshot%202023-11-07%20155205.png)
+
+Chọn "Allow Access From Anywhere" và lưu lại
+![Thêm địa chỉ IP](./assets/Screenshot%202023-11-07%20155323.png)
+
+Trở về phần "Database" và bấm nút "Connect"
+![Database](./assets/Screenshot%202023-11-07%20155507.png)
+
+Chọn phần "Drivers" và copy connection url, thay vào `MONGO_CONNECTION_URL` ở trong file `.env`
+
+# Cài đặt Novu
+
+__Novu__ là một hạ tầng mã nguồn mở quản lý các thông báo. Nó cung cấp một API duy nhất giúp việc gửi các thông báo (ví dụ như In-App, SMS, Email,...) trở nên dễ dàng và tiện lợi hơn. Trong __Novu__, bạn có thể tự tạo một workflow và xác định các điều kiện để kích hoạt từng kênh thông báo.
+
+## Tạo tài khoản
+
+Vào [web platform của Novu](https://web.novu.co/) tạo tài 
+
+## Kết nối Back-end với Novu
+
+Vào phần Settings ở thanh điều hướng, copy __API KEY__ và thay vào `NOVU_API_KEY` trong file `.env`
+
+## Cài đặt các hàm kích hoạt Novu
 
 
--  Now the friends reminder thing was sorted out but what if that friend was a work collegue. I couldn't send them phone reminders as that would make me seem pushy and I couldn't just ignore urgent work related matters as well! So I created another workaround:
-> Solution: _I leveraged another feature of __Novu__ to send email reminders on their mail address. This way I was able to send them reminders (and having the mental peace) and not seem like I was trying to push work related tasks._
+# Chạy web trên localhost
 
-## Run locally
-
-In the project directory, you can run:
+Trong đường dẫn thư mục back-end, sử dụng lệnh:
 
 ```bash
 npm install
 ```
-or
+hoặc
 ```bash
 npm i
 ```
-Either of these commands will install all the packages needed for this project to run.  
+Lệnh này sẽ cài đặt các package cần thiết cho project.  
 
 
 ```bash
 npm start
 ```
-Runs the app in the development mode.
+Chạy ứng dụng ở môi trường develop
 
-Make sure you also complete the set up for environment variables listed below, as without it, the app won't run! 👇
+Dưới đây là kết quả khi chạy ứng dụng Moonshine ở localhost 
 
-Here is Moonshine running locally on my machine:  
+![Moonshine chạy trên localhost](./assets/Screenshot%202023-04-07%20at%2011.28.09%20AM.png)
 
-![Running_moonshine_locally_screenshot](./assets/Screenshot%202023-04-07%20at%2011.28.09%20AM.png)
+# Biến môi trường
 
+Để chạy project này, bạn cần thêm những biến môi trường sau vào file `.env`
 
+`MONGO_CONNECTION_URL`: URL dùng để kết nối với MongoDB
 
+`NOVU_API_KEY`: Novu API key của bạn
 
-## Environment Variables
+# Công nghệ sử dụng
 
-To run this project, you will need to add the following environment variable to your .env file
+## Client-side 
+Novu, React, Redux, DotEnv, Axios, JWTEncode, Moment, React-Icons,...
 
-`MONGO_CONNECTION_URL`: The URL that you've obtained from MongoDB.  
+## Server-side
+Novu, Node, Express, MongoDB, Mongoose, BCrypt, JSONWebToken,...
 
-`NOVU_API_KEY`: Your Novu API key
-
-Add them both to your .env file.
-
-
-## Tech Stack
-
-**Client-side:**  
-Novu, React, Redux, DotEnv, Axios, JWTEncode, Moment, React-Icons and more
-
-**Server-side:**  
-Novu, Node, Express, MongoDB, Mongoose, BCrypt, JSONWebToken and more
-
-**Deployment:**  
+## Triển khai
 - Front-End: Vercel
 - Back-End: Render
 
 
-## More info:
-- This repo only contains the back-end code and relies on the front-end code [here](https://github.com/sumitsaurabh927/Momentum-fe) to work correctly. Make sure to check that out as well.
+# Thông tin thêm
+Repo này chỉ chứa code phần back-end và code phần front-end nằm [ở đây](https://github.com/hienhienn/todo-app-fe) 
 
-- Also, I've written a detailed article about Moonshine and I'll be really happy if you'd [give it a heart here!](inserLlink) 😍

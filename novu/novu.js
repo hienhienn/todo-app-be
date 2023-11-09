@@ -4,6 +4,16 @@ import CircularJSON from "circular-json";
 
 dotenv.config();
 
+/**
+ * Gửi email sử dụng Novu:
+ * - Bước 1: Tạo 1 subcriber bằng Id và email truyền vào.
+ * - Bước 2: Kích hoạt workflow gửi email với các thông tin cần thiết.
+ * @param {string} title - Tiêu đề của email cần gửi
+ * @param {string} description - Nội dung của email
+ * @param {string} email - Địa chỉ email
+ * @param {string} Id - Id để tạo subcribers
+ * @returns {void}
+ */
 export const getNotification = async (title, description, email, Id) => {
   const novu = new Novu(process.env.NOVU_API_KEY);
 
@@ -24,12 +34,19 @@ export const getNotification = async (title, description, email, Id) => {
   });
 };
 
+/**
+ * Gửi tin nhắn SMS bằng Novu: Kích hoạt workflow gửi tin nhắn với thông tin cần thiết
+ * @param {string} title - Tiêu đề tin nhắn cần gửi
+ * @param {string} description - Nội dung tin nhắn
+ * @param {string} phone - Số điện thoại cần gửi
+ * @param {string} Id - Id của subcriber
+ * @returns {void}
+ */
 export const smsNotification = async (
   title,
   description,
   phone,
   Id,
-  country_code
 ) => {
   const novu = new Novu(process.env.NOVU_API_KEY);
 
@@ -45,6 +62,14 @@ export const smsNotification = async (
   });
 };
 
+/**
+ * Nhận thông báo in-app: Kích hoạt workflow gửi thông báo in-app
+ * @param {string} title - Tiêu đề thông báo
+ * @param {string} description - Nội dung
+ * @param {string} Id - Id subcriber
+ * @param {string} message - thông báo
+ * @returns {void}
+ */
 export const inAppNotification = async (title, description, Id, message) => {
   const novu = new Novu(process.env.NOVU_API_KEY);
 
@@ -64,9 +89,23 @@ export const inAppNotification = async (title, description, Id, message) => {
   });
 };
 
+/**
+ * Tạo một topic có tên và key xác định
+ * 
+ * *Topic là một nhóm các subcrbers cùng nhận thông báo về một sự kiện nào đó*
+ * @param {Object} req - Thông tin front-end gửi về cho back-end
+ * @param {{
+ *  key: string;
+ *  name: string
+ * }} req.body
+ * @param {Object} res - Thông tin back-end gửi cho front-end.
+ * @param {number} res.statusCode
+ * @param {Notes | string} res.body
+ * Nếu thành công, `res` có `status` là 200 và `body` chứa thông tin topic vừa được tạo.
+ * Nếu thất bại, `res` có `status` là 500 và `body` chứa thông báo lỗi xảy ra.
+ */
 export const getTopics = async (req, res) => {
   const novu = new Novu(process.env.NOVU_API_KEY);
-  console.log(process.env.NOVU_API_KEY);
 
   // key is novu-sumit
   // name is topics-sumit
@@ -79,6 +118,15 @@ export const getTopics = async (req, res) => {
   }
 };
 
+/**
+ * Lấy thông tin của 1 topic thông qua key xác định.
+ * 
+ * *Topic là một nhóm các subcrbers cùng nhận thông báo về một sự kiện nào đó*
+ * @param {*} req - Thông tin front-end gửi về cho back-end
+ * @param {*} res - Thông tin back-end gửi cho front-end.
+ * Nếu thành công, `res` có `status` là 200 và `body` chứa thông tin topic cần tìm.
+ * Nếu thất bại, `res` có `status` là 500 và `body` chứa thông báo lỗi xảy ra.
+ */
 export const getTopicByKey = async (req, res) => {
   const novu = new Novu(process.env.NOVU_API_KEY);
   const { key } = req.params;
@@ -91,6 +139,13 @@ export const getTopicByKey = async (req, res) => {
   }
 };
 
+/**
+ * Tạo một subcriber qua email
+ * @param {*} req - Thông tin front-end gửi về cho back-end
+ * @param {*} res - Thông tin back-end gửi cho front-end.
+ * Nếu thành công, `res` có `status` là 200 và `body` chứa id của subcriber vừa được tạo.
+ * Nếu thất bại, `res` có `status` là 500 và `body` chứa thông báo lỗi xảy ra.
+ */
 export const createSubscriber = async (req, res) => {
   const novu = new Novu(process.env.NOVU_API_KEY);
 
@@ -110,6 +165,13 @@ export const createSubscriber = async (req, res) => {
   }
 };
 
+/**
+ * Thêm subcriber vào topic sử dụng topicKey và subscriberId
+ * @param {*} req - Thông tin front-end gửi về cho back-end
+ * @param {*} res - Thông tin back-end gửi cho front-end.
+ * Nếu thành công, `res` có `status` là 200 và `body` chứa kết quả.
+ * Nếu thất bại, `res` có `status` là 500 và `body` chứa thông báo lỗi xảy ra.
+ */
 export const addSubscriberToTopic = async (req, res) => {
   const novu = new Novu(process.env.NOVU_API_KEY);
   try {
@@ -131,6 +193,15 @@ export const addSubscriberToTopic = async (req, res) => {
   }
 };
 
+/**
+ * Gửi thông báo cho topic
+ * 
+ * *Topic là một nhóm các subcrbers cùng nhận thông báo về một sự kiện nào đó*
+ * @param {*} req - Thông tin front-end gửi về cho back-end
+ * @param {*} res - Thông tin back-end gửi cho front-end.
+ * Nếu thành công, `res` có `status` là 200 và `body` chứa kết quả.
+ * Nếu thất bại, `res` có `status` là 500 và `body` chứa thông báo lỗi xảy ra.
+ */
 export const sendNotificationToTopic = async (req, res) => {
   const novu = new Novu(process.env.NOVU_API_KEY);
 
