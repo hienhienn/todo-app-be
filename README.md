@@ -141,5 +141,10 @@ Novu, Node, Express, MongoDB, Mongoose, BCrypt, JSONWebToken,...
 - Back-End: Render
 
 # Thông tin thêm
-Repo này chỉ chứa code phần back-end và code phần front-end nằm [ở đây](https://github.com/hienhienn/todo-app-fe) 
+- Link github back-end: [https://github.com/hienhienn/todo-app-be](https://github.com/hienhienn/todo-app-be)
+- Link github front-end: [https://github.com/hienhienn/todo-app-fe](https://github.com/hienhienn/todo-app-fe)
+- Link back-end deploy trên render: [https://todo-app-be-ytia.onrender.com/](https://todo-app-be-ytia.onrender.com/)
+- Link front-end deploy trên vercel: [https://todo-app-fe-ruby.vercel.app/](https://todo-app-fe-ruby.vercel.app/)
+- Link jsdocs back-end: [https://todo-app-fe-asok.vercel.app/](https://todo-app-fe-asok.vercel.app/)
+- Link jsdocs front-end: [https://todo-app-fe-asok.vercel.app/index.html](https://todo-app-fe-asok.vercel.app/index.html)
 
