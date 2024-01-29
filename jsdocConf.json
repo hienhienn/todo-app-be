@@ -1,0 +1,23 @@
+{
+	"plugins": ["plugins/markdown"],
+	"recurseDepth": 10,
+	"source": {
+		"include": ["./controllers", "./models", "./novu", "./utils", "README.md"],
+		"includePattern": ".+\\.js(doc|x)?$",
+		"excludePattern": "node_modules"
+	},
+	"sourceType": "module",
+	"tags": {
+		"allowUnknownTags": true,
+		"dictionaries": ["jsdoc", "closure"]
+	},
+	"templates": {
+		"cleverLinks": false,
+		"monospaceLinks": false
+	},
+	"docdash": {
+		"sort": true,
+		"search": true,
+		"collapse": false
+	}
+}

@@ -8,17 +8,6 @@ import mongoose from "mongoose";
  * @property {String} password - mật khẩu tài khoản
  */
 
-/**
- * Lược đồ thể hiện cấu trúc của người sử dụng, được lưu vào Collection `User` trong MongoDB:
- *
- * `id: String` - id
- *
- * `name: String` - tên, bắt buộc có
- *
- * `email: String` - email, bắt buộc có
- *
- * `password: String` - mật khẩu, bắt buộc có
- */
 const userSchema = mongoose.Schema(
   {
     id: { type: String },

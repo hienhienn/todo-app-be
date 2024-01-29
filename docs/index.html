@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Giới thiệu về Moonshine Todo-app</h1>
+<p><img src="./assets/sunrise.png" alt="Logo"></p>
+<p>Chức năng của <strong>Moonshine</strong> :</p>
+<ol>
+<li>Hiển thị một câu trích dẫn có thể truyền cảm hứng, hiển thị thời gian hiện tại và hình nền ngẫu nhiên.</li>
+<li>Lên kế hoạch cho các ngày.</li>
+<li>Gửi lời nhắc cho bạn bè và đồng nghiệp về các công việc thông qua SMS và Email.</li>
+<li>App có sẵn ở mọi nơi.</li>
+</ol>
+<h2>Ảnh màn hình</h2>
+<p><img src="./assets/Screenshot%202023-04-06%20at%201.01.25%20PM.png" alt="Thời gian hiện tại">
+<img src="./assets/Screenshot%202023-04-07%20at%2011.40.35%20AM.png" alt="Trung tâm thông báo của Moonshine">
+<img src="./assets/Screenshot%202023-04-07%20at%2011.31.40%20AM.png" alt="Gửi email qua Moonshine">
+<img src="./assets/Screenshot%202023-04-07%20at%2011.34.46%20AM.png" alt="Cập nhật todo và gửi lời nhắc sms"></p>
+<h1>Cài đặt database</h1>
+<p>Trong project này, chúng ta sẽ sử dụng MongoDB để lưu trữ dữ liệu.</p>
+<h2>Tạo tài khoản MongoDB</h2>
+<p>Tạo tài khoản <a href="https://www.mongodb.com">MongoDB</a> và đăng nhập</p>
+<h2>Tạo project trong MongoDB</h2>
+<p>Tạo một project mới ở phía trên bên trái bằng cách bấm vào nút &quot;New Project&quot;
+<img src="./assets/Screenshot%202023-11-07%20152756.png" alt="Tạo project mới"></p>
+<p>Đặt tên cho Project rồi bấm &quot;Next&quot; và thêm thành viên (nếu có) rồi bấm &quot;Create Project&quot;
+<img src="./assets/Screenshot%202023-11-07%20153531.png" alt="Đặt tên Project">
+<img src="./assets/Screenshot%202023-11-07%20153806.png" alt="Thêm thành viên Project"></p>
+<h2>Tạo Database</h2>
+<p>Bấm &quot;Create&quot; ở giữa màn hình để tạo một cloud database
+<img src="./assets/Screenshot%202023-11-07%20153924.png" alt="Tạo database"></p>
+<p>Chọn lựa chọn miễn phí
+<img src="./assets/Screenshot%202023-11-07%20154055.png" alt="Lựa chọn"></p>
+<p>Nhập username và password mà dùng để đăng nhập vào MongoDB, sau đó bấm &quot;Create User&quot;
+<img src="./assets/Screenshot%202023-11-07%20154951.png" alt="Tạo user"></p>
+<p>Sau đó kéo xuống cuối, bấm &quot;Finish and Close&quot;
+<img src="./assets/Screenshot%202023-11-07%20154924.png" alt="Hoàn thành tạo database"></p>
+<h2>Kết nối với Database</h2>
+<p>Vào phần &quot;Network Access&quot;, bấm &quot;Add IP Address&quot;
+<img src="./assets/Screenshot%202023-11-07%20155205.png" alt="Network Access"></p>
+<p>Chọn &quot;Allow Access From Anywhere&quot; và lưu lại
+<img src="./assets/Screenshot%202023-11-07%20155323.png" alt="Thêm địa chỉ IP"></p>
+<p>Trở về phần &quot;Database&quot; và bấm nút &quot;Connect&quot;
+<img src="./assets/Screenshot%202023-11-07%20155507.png" alt="Database"></p>
+<p>Chọn phần &quot;Drivers&quot; và copy connection url, thay vào <code>MONGO_CONNECTION_URL</code> ở trong file <code>.env</code></p>
+<h1>Cài đặt Novu</h1>
+<p><strong>Novu</strong> là một hạ tầng mã nguồn mở quản lý các thông báo. Nó cung cấp một API duy nhất giúp việc gửi các thông báo (ví dụ như In-App, SMS, Email,...) trở nên dễ dàng và tiện lợi hơn. Trong <strong>Novu</strong>, bạn có thể tự tạo một workflow và xác định các điều kiện để kích hoạt từng kênh thông báo.</p>
+<h2>Tạo tài khoản</h2>
+<p>Vào <a href="https://web.novu.co/">web platform của Novu</a> tạo tài khoản</p>
+<h2>Kết nối Back-end với Novu</h2>
+<p>Vào phần Settings ở thanh điều hướng, copy <strong>API KEY</strong> và thay vào <code>NOVU_API_KEY</code> trong file <code>.env</code></p>
+<h2>Cài đặt các hàm kích hoạt Novu</h2>
+<h1>Chạy web trên localhost</h1>
+<p>Trong đường dẫn thư mục back-end, sử dụng lệnh:</p>
+<pre class="prettyprint source lang-bash"><code>npm install
+</code></pre>
+<p>hoặc</p>
+<pre class="prettyprint source lang-bash"><code>npm i
+</code></pre>
+<p>Lệnh này sẽ cài đặt các package cần thiết cho project.</p>
+<pre class="prettyprint source lang-bash"><code>npm start
+</code></pre>
+<p>Chạy ứng dụng ở môi trường develop</p>
+<p>Dưới đây là kết quả khi chạy ứng dụng Moonshine ở localhost</p>
+<p><img src="./assets/Screenshot%202023-04-07%20at%2011.28.09%20AM.png" alt="Moonshine chạy trên localhost"></p>
+<h1>Biến môi trường</h1>
+<p>Để chạy project này, bạn cần thêm những biến môi trường sau vào file <code>.env</code></p>
+<p><code>MONGO_CONNECTION_URL</code>: URL dùng để kết nối với MongoDB</p>
+<p><code>NOVU_API_KEY</code>: Novu API key của bạn</p>
+<h1>Công nghệ sử dụng</h1>
+<h2>Client-side</h2>
+<p>Novu, React, Redux, DotEnv, Axios, JWTEncode, Moment, React-Icons,...</p>
+<h2>Server-side</h2>
+<p>Novu, Node, Express, MongoDB, Mongoose, BCrypt, JSONWebToken,...</p>
+<h2>Triển khai</h2>
+<ul>
+<li>Front-End: Vercel</li>
+<li>Back-End: Render</li>
+</ul>
+<h1>Thông tin thêm</h1>
+<p>Repo này chỉ chứa code phần back-end và code phần front-end nằm <a href="https://github.com/hienhienn/todo-app-fe">ở đây</a></p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-controllers_note.html">controllers/note</a></li><li><a href="module-controllers_user.html">controllers/user</a></li><li><a href="module-novu.html">novu</a></li></ul><h3>Global</h3><ul><li><a href="global.html#auth">auth</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jan 29 2024 13:41:08 GMT+0700 (Indochina Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

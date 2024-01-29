@@ -1,17 +1,41 @@
-import { Novu } from "@novu/node";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: novu.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: novu.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Novu } from "@novu/node";
 import dotenv from "dotenv";
 import CircularJSON from "circular-json";
 
 dotenv.config();
 
-/** @module novu */
-
 /**
- * @description Gửi email sử dụng Novu:
+ * Gửi email sử dụng Novu:
  * - Bước 1: Tạo 1 subcriber bằng Id và email truyền vào.
  * - Bước 2: Kích hoạt workflow gửi email với các thông tin cần thiết.
- * @async
- * @function
  * @param {string} title - Tiêu đề của email cần gửi
  * @param {string} description - Nội dung của email
  * @param {string} email - Địa chỉ email
@@ -39,9 +63,7 @@ export const getNotification = async (title, description, email, Id) => {
 };
 
 /**
- * @async
- * @function
- * @description Gửi tin nhắn SMS bằng Novu: Kích hoạt workflow gửi tin nhắn với thông tin cần thiết
+ * Gửi tin nhắn SMS bằng Novu: Kích hoạt workflow gửi tin nhắn với thông tin cần thiết
  * @param {string} title - Tiêu đề tin nhắn cần gửi
  * @param {string} description - Nội dung tin nhắn
  * @param {string} phone - Số điện thoại cần gửi
@@ -64,9 +86,7 @@ export const smsNotification = async (title, description, phone, Id) => {
 };
 
 /**
- * @async
- * @function
- * @description Nhận thông báo in-app: Kích hoạt workflow gửi thông báo in-app
+ * Nhận thông báo in-app: Kích hoạt workflow gửi thông báo in-app
  * @param {string} title - Tiêu đề thông báo
  * @param {string} description - Nội dung
  * @param {string} Id - Id subcriber
@@ -93,9 +113,7 @@ export const inAppNotification = async (title, description, Id, message) => {
 };
 
 /**
- * @async
- * @function
- * @description Tạo một topic có tên và key xác định
+ * Tạo một topic có tên và key xác định
  * 
  * *Topic là một nhóm các subcrbers cùng nhận thông báo về một sự kiện nào đó*
  * @param {Object} req - Thông tin front-end gửi về cho back-end
@@ -124,13 +142,11 @@ export const getTopics = async (req, res) => {
 };
 
 /**
- * @async
- * @function
- * @description Lấy thông tin của 1 topic thông qua key xác định.
+ * Lấy thông tin của 1 topic thông qua key xác định.
  * 
  * *Topic là một nhóm các subcrbers cùng nhận thông báo về một sự kiện nào đó*
- * @param {Object} req - Thông tin front-end gửi về cho back-end
- * @param {Object} res - Thông tin back-end gửi cho front-end.
+ * @param {*} req - Thông tin front-end gửi về cho back-end
+ * @param {*} res - Thông tin back-end gửi cho front-end.
  * Nếu thành công, `res` có `status` là 200 và `body` chứa thông tin topic cần tìm.
  * Nếu thất bại, `res` có `status` là 500 và `body` chứa thông báo lỗi xảy ra.
  */
@@ -147,11 +163,9 @@ export const getTopicByKey = async (req, res) => {
 };
 
 /**
- * @async
- * @function
- * @description Tạo một subcriber qua email
- * @param {Object} req - Thông tin front-end gửi về cho back-end
- * @param {Object} res - Thông tin back-end gửi cho front-end.
+ * Tạo một subcriber qua email
+ * @param {*} req - Thông tin front-end gửi về cho back-end
+ * @param {*} res - Thông tin back-end gửi cho front-end.
  * Nếu thành công, `res` có `status` là 200 và `body` chứa id của subcriber vừa được tạo.
  * Nếu thất bại, `res` có `status` là 500 và `body` chứa thông báo lỗi xảy ra.
  */
@@ -175,11 +189,9 @@ export const createSubscriber = async (req, res) => {
 };
 
 /**
- * @async
- * @function
- * @description Thêm subcriber vào topic sử dụng topicKey và subscriberId
- * @param {Object} req - Thông tin front-end gửi về cho back-end
- * @param {Object} res - Thông tin back-end gửi cho front-end.
+ * Thêm subcriber vào topic sử dụng topicKey và subscriberId
+ * @param {*} req - Thông tin front-end gửi về cho back-end
+ * @param {*} res - Thông tin back-end gửi cho front-end.
  * Nếu thành công, `res` có `status` là 200 và `body` chứa kết quả.
  * Nếu thất bại, `res` có `status` là 500 và `body` chứa thông báo lỗi xảy ra.
  */
@@ -205,13 +217,11 @@ export const addSubscriberToTopic = async (req, res) => {
 };
 
 /**
- * @async
- * @function
- * @description Gửi thông báo cho topic
+ * Gửi thông báo cho topic
  * 
  * *Topic là một nhóm các subcrbers cùng nhận thông báo về một sự kiện nào đó*
- * @param {Object} req - Thông tin front-end gửi về cho back-end
- * @param {Object} res - Thông tin back-end gửi cho front-end.
+ * @param {*} req - Thông tin front-end gửi về cho back-end
+ * @param {*} res - Thông tin back-end gửi cho front-end.
  * Nếu thành công, `res` có `status` là 200 và `body` chứa kết quả.
  * Nếu thất bại, `res` có `status` là 500 và `body` chứa thông báo lỗi xảy ra.
  */
@@ -239,3 +249,26 @@ export const sendNotificationToTopic = async (req, res) => {
     res.status(500).json(CircularJSON.stringify({ message: error.message }));
   }
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addSubscriberToTopic">addSubscriberToTopic</a></li><li><a href="global.html#createSubscriber">createSubscriber</a></li><li><a href="global.html#getNotification">getNotification</a></li><li><a href="global.html#getTopicByKey">getTopicByKey</a></li><li><a href="global.html#getTopics">getTopics</a></li><li><a href="global.html#inAppNotification">inAppNotification</a></li><li><a href="global.html#sendNotificationToTopic">sendNotificationToTopic</a></li><li><a href="global.html#smsNotification">smsNotification</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jan 27 2024 23:16:29 GMT+0700 (Indochina Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

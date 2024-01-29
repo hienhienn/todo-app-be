@@ -64,13 +64,37 @@ __Novu__ là một hạ tầng mã nguồn mở quản lý các thông báo. Nó
 
 ## Tạo tài khoản
 
-Vào [web platform của Novu](https://web.novu.co/) tạo tài 
+Vào [web platform của Novu](https://web.novu.co/) tạo tài khoản
 
 ## Kết nối Back-end với Novu
 
 Vào phần Settings ở thanh điều hướng, copy __API KEY__ và thay vào `NOVU_API_KEY` trong file `.env`
 
+![Novu api key](./assets/Screenshot%202024-01-29%20134512.png)
+
+
 ## Cài đặt các hàm kích hoạt Novu
+
+### Cấu hình luồng gửi email
+Luồng hoạt động
+![Email workflow](./assets/Screenshot%202024-01-29%20135113.png)
+
+Chi tiết bước gửi email
+![Email step](./assets/Screenshot%202024-01-29%20135143.png)
+
+### Cấu hình luồng gửi thông báo inapp
+Luồng hoạt động
+![In app workflow](./assets/Screenshot%202024-01-29%20135206.png)
+
+Chi tiết bước gửi thông báo
+![Inapp step](./assets/Screenshot%202024-01-29%20135228.png)
+
+### Cấu hình luồng gửi tin nhắn sms
+Luồng hoạt động
+![Sms workflow](./assets/Screenshot%202024-01-29%20135325.png)
+
+Chi tiết bước gửi email
+![sms step](./assets/Screenshot%202024-01-29%20135406.png)
 
 
 # Chạy web trên localhost
@@ -115,7 +139,6 @@ Novu, Node, Express, MongoDB, Mongoose, BCrypt, JSONWebToken,...
 ## Triển khai
 - Front-End: Vercel
 - Back-End: Render
-
 
 # Thông tin thêm
 Repo này chỉ chứa code phần back-end và code phần front-end nằm [ở đây](https://github.com/hienhienn/todo-app-fe) 
